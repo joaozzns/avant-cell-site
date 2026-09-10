@@ -457,7 +457,89 @@ window.addEventListener('load', function () {
 				</div>
 		<div class="elementor-element elementor-element-14f3477 e-con-full animated-slow e-flex elementor-invisible e-con e-child" data-id="14f3477" data-element_type="container" data-e-type="container" data-settings="{&quot;animation&quot;:&quot;fadeInRight&quot;}">
 				<div class="elementor-element elementor-element-bbf4601 elementor-widget elementor-widget-html" data-id="bbf4601" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
-					<div role="main" id="formulario-conversao-contato-978a7dd7c52e4899866c"></div><script type="text/javascript" src="https://d335luupugsy2.cloudfront.net/js/rdstation-forms/stable/rdstation-forms.min.js"></script><script type="text/javascript"> new RDStationForms('formulario-conversao-contato-978a7dd7c52e4899866c', 'null').createForm();</script>				</div>
+					<div class="avc-form">
+<style>
+/* Formulario de contato.
+   O site e estatico: nao ha servidor para receber um POST. Em vez de fingir um
+   envio que nao acontece (era o que o formulario do RD Station fazia, mandando
+   os contatos para o CRM de outra empresa), este monta a mensagem e abre o
+   cliente de e-mail da pessoa. Funciona sem backend nenhum.
+   >>> TROQUE o endereco em DESTINO pelo e-mail que vai receber os contatos. <<< */
+.avc-form{font-family:'Plus Jakarta Sans',sans-serif}
+.avc-form .linha{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.avc-form label{display:block;font-size:13px;font-weight:600;color:#F4F6FF;margin:0 0 7px}
+.avc-form input,.avc-form textarea{width:100%;box-sizing:border-box;padding:13px 15px;
+  border-radius:11px;border:1px solid rgba(244,246,255,.16);background:rgba(255,255,255,.05);
+  color:#fff;font-size:14.5px;font-family:inherit;outline:none;transition:border-color .2s,background .2s}
+.avc-form input::placeholder,.avc-form textarea::placeholder{color:rgba(244,246,255,.42)}
+.avc-form input:focus,.avc-form textarea:focus{border-color:#5A77FF;background:rgba(255,255,255,.08)}
+.avc-form textarea{min-height:128px;resize:vertical}
+.avc-form .campo{margin-bottom:16px}
+.avc-form button{width:100%;padding:15px;border:0;border-radius:11px;cursor:pointer;
+  background:#1D4ED8;color:#fff;font-family:inherit;font-size:15px;font-weight:600;
+  transition:transform .2s,box-shadow .2s}
+.avc-form button:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(29,78,216,.45)}
+.avc-form .nota{margin:12px 0 0;font-size:12px;line-height:1.5;color:rgba(244,246,255,.5);text-align:center;min-height:18px}
+@media(max-width:600px){.avc-form .linha{grid-template-columns:1fr}}
+</style>
+<form id="avc-contato" novalidate>
+  <div class="linha">
+    <div class="campo">
+      <label for="avc-nome">Nome</label>
+      <input id="avc-nome" name="nome" type="text" placeholder="Seu nome" autocomplete="given-name">
+    </div>
+    <div class="campo">
+      <label for="avc-sobrenome">Sobrenome</label>
+      <input id="avc-sobrenome" name="sobrenome" type="text" placeholder="Seu sobrenome" autocomplete="family-name">
+    </div>
+  </div>
+  <div class="campo">
+    <label for="avc-email">E-mail</label>
+    <input id="avc-email" name="email" type="email" placeholder="voce@suaempresa.com.br" autocomplete="email">
+  </div>
+  <div class="campo">
+    <label for="avc-msg">Como podemos ajudar?</label>
+    <textarea id="avc-msg" name="mensagem" placeholder="Conte um pouco sobre a sua loja e o que voce precisa."></textarea>
+  </div>
+  <button type="submit">Enviar</button>
+  <p class="nota" id="avc-nota"></p>
+</form>
+<script>
+(function () {
+  "use strict";
+  var DESTINO = "contato@avantcell.com.br";   /* <<< trocar pelo e-mail real */
+
+  var form = document.getElementById('avc-contato');
+  var nota = document.getElementById('avc-nota');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var nome = document.getElementById('avc-nome').value.trim();
+    var sobre = document.getElementById('avc-sobrenome').value.trim();
+    var email = document.getElementById('avc-email').value.trim();
+    var msg = document.getElementById('avc-msg').value.trim();
+
+    if (!nome || !email || !msg) {
+      nota.textContent = 'Preencha nome, e-mail e mensagem.';
+      return;
+    }
+    if (email.indexOf('@') < 1 || email.indexOf('.') < 0) {
+      nota.textContent = 'Confira o e-mail digitado.';
+      return;
+    }
+
+    var assunto = 'Contato pelo site — ' + nome + (sobre ? ' ' + sobre : '');
+    var corpo = 'Nome: ' + nome + (sobre ? ' ' + sobre : '') + '\n'
+              + 'E-mail: ' + email + '\n\n' + msg;
+
+    nota.textContent = 'Abrindo seu programa de e-mail...';
+    window.location.href = 'mailto:' + DESTINO
+      + '?subject=' + encodeURIComponent(assunto)
+      + '&body=' + encodeURIComponent(corpo);
+  });
+})();
+</script>
+</div>				</div>
 				<div class="elementor-element elementor-element-938f304 elementor-hidden-widescreen elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-mobile elementor-button-align-stretch elementor-widget elementor-widget-form" data-id="938f304" data-element_type="widget" data-e-type="widget" data-settings="{&quot;button_width&quot;:&quot;20&quot;,&quot;step_next_label&quot;:&quot;Next&quot;,&quot;step_previous_label&quot;:&quot;Previous&quot;,&quot;step_type&quot;:&quot;number_text&quot;,&quot;step_icon_shape&quot;:&quot;circle&quot;}" data-widget_type="form.default">
 							<form class="elementor-form" method="post" name="New Form" aria-label="New Form">
 			<input type="hidden" name="post_id" value="6288"/>
@@ -650,9 +732,7 @@ window.addEventListener('load', function () {
 <script id="wpo_min-footer-1-js" src="../wp-content/cache/wpo-minify/1787875534/assets/wpo-minify-footer-6c980793.min.js"></script>
 <script id="wpo_min-footer-2-js" src="../wp-content/cache/wpo-minify/1787875534/assets/wpo-minify-footer-9f213149.min.js"></script>
 <script id="wpo_min-footer-3-js" src="../wp-content/cache/wpo-minify/1787875534/assets/wpo-minify-footer-fdc01558.min.js"></script>
-<script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/34fcafed-fe07-4ced-855d-a0ccd84f1d6e-loader.js" ></script>
 <script src="../logo-adaptativa.js" defer></script>
-<script src="../politica-cookies.js" defer></script>
 </body>
 </html>
 
