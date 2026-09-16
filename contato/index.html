@@ -453,7 +453,7 @@ window.addEventListener('load', function () {
    envio que nao acontece (era o que o formulario do RD Station fazia, mandando
    os contatos para o CRM de outra empresa), este monta a mensagem e abre o
    cliente de e-mail da pessoa. Funciona sem backend nenhum.
-   >>> TROQUE o endereco em DESTINO pelo e-mail que vai receber os contatos. <<< */
+   O endereco que recebe os contatos fica em DESTINO, logo abaixo do formulario. */
 .avc-form{font-family:'Plus Jakarta Sans',sans-serif}
 .avc-form .linha{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .avc-form label{display:block;font-size:13px;font-weight:600;color:#F4F6FF;margin:0 0 7px}
@@ -496,7 +496,7 @@ window.addEventListener('load', function () {
 <script>
 (function () {
   "use strict";
-  var DESTINO = "contato@avantcell.com.br";   /* <<< trocar pelo e-mail real */
+  var DESTINO = "comercial.avantcell@gmail.com";
 
   var form = document.getElementById('avc-contato');
   var nota = document.getElementById('avc-nota');
