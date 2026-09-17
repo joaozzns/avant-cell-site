@@ -1,0 +1,10 @@
+# Avant Cell — regras para robôs de busca.
+# Ao publicar em um domínio próprio, troque avantcell.com.br na linha Sitemap.
+
+User-agent: *
+Allow: /
+
+# Área de acesso ao sistema: não faz sentido aparecer na busca.
+Disallow: /entrar/
+
+Sitemap: https://avantcell.com.br/sitemap.xml
