@@ -253,3 +253,31 @@ table table{font-size:.8em}table table td,table table th{padding:7px;line-height
     display: none !important;
   }
 }
+
+/* No celular o tema escondia o botao "Entrar" do topo (classe
+   elementor-hidden-mobile). Como e a porta de entrada do sistema, ele volta,
+   em tamanho menor para caber ao lado do menu. */
+@media (max-width: 767px) {
+  /* No celular o tema escondia o botao "Entrar" do topo (classe
+     elementor-hidden-mobile). Como e a porta de entrada do sistema, ele volta,
+     encaixado dentro da barra, a esquerda do menu sanduiche. */
+  .elementor-element.elementor-element-eb8a4cd {
+    position: relative !important;
+  }
+
+  .elementor-element.elementor-element-ec60a1e {
+    display: block !important;
+    position: absolute !important;
+    right: 64px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: auto !important;
+  }
+
+  .btn-glass-header {
+    font-size: 12px !important;
+    padding: 7px 14px !important;
+    white-space: nowrap;
+  }
+}
