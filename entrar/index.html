@@ -25,9 +25,10 @@ h1{font-size:22px;font-weight:600;color:#fff;letter-spacing:.4px;margin-bottom:2
 .campo input::placeholder{color:rgba(255,255,255,.5)}
 .campo input:focus{border-color:#4C86FF;background:rgba(255,255,255,.1)}
 .campo svg{position:absolute;right:15px;top:50%;transform:translateY(-50%);opacity:.62}
-.campo .olho{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:34px;height:34px;
+.campo .olho{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:38px;height:38px;background:rgba(255,255,255,.08)!important;
   display:grid;place-items:center;background:none;border:none;margin:0;padding:0;cursor:pointer;border-radius:8px}
-.campo .olho svg{position:static;transform:none;opacity:.62;transition:opacity .2s}
+.campo .olho svg{position:static;transform:none;opacity:.92;width:21px;height:21px;transition:opacity .2s}
+.campo .olho:hover,.campo .olho:focus-visible{background:rgba(255,255,255,.16)!important}
 .campo .olho:hover svg,.campo .olho:focus-visible svg{opacity:1}
 .campo .olho:focus-visible{outline:2px solid #4C86FF;outline-offset:2px}
 .campo .olho[aria-pressed="false"] .olho-fechado{display:none}
