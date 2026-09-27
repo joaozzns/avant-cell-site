@@ -281,3 +281,39 @@ table table{font-size:.8em}table table td,table table th{padding:7px;line-height
     white-space: nowrap;
   }
 }
+
+/* Planos: alinhar o miolo dos cartões
+   ----------------------------------------------------------------------
+   O export do Elementor deixou cada cartão com altura mínima fixa e
+   `justify-content: space-between`. Como a lista de itens tem tamanho
+   diferente em cada plano (300px, 240px e 120px), a sobra era repartida de
+   um jeito em cada cartão: a divisória caía em 466px no Essencial, 496px no
+   Profissional e 458px no Premium, e o Premium ainda ficava com um vão de
+   200px no fim. Os três têm o mesmo cabeçalho (nome, preço e botão somam
+   162px), então começando de cima eles se alinham sozinhos e a sobra fica
+   toda no rodapé do cartão, que é onde ela não incomoda.
+
+   Vale para a página inicial e para /planos, que repetem os mesmos cartões.
+
+   O `!important` aqui não é preguiça: o Elementor escreve uma regra por
+   cartão, no formato `.elementor-5644 .elementor-element.elementor-element-35268aa`
+   — três classes de especificidade, e um id diferente para cada um dos doze
+   cartões das duas páginas. Competir com isso seletor a seletor quebraria no
+   dia em que a página fosse reexportada com outros ids. */
+.box1,
+.box2 {
+	--justify-content: flex-start !important;
+}
+
+/* Planos: aproximar a lista de recursos da divisória
+   ----------------------------------------------------------------------
+   O cartão separa os três blocos (nome/preço/botão, divisória e lista) com
+   30px cada. Isso empurrava a lista para baixo e deixava os recursos
+   descolados do resto do cartão, com um vão visível logo abaixo da linha.
+   18px mantém a separação entre as partes e sobe os itens uns 24px. */
+.box1,
+.box2 {
+	--gap: 18px 18px !important;
+	--row-gap: 18px !important;
+	--column-gap: 18px !important;
+}

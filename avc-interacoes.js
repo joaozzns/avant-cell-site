@@ -51,6 +51,17 @@
     var paineis = bloco.querySelectorAll(".e-n-tabs-content > [role='tabpanel']");
     if (!titulos.length) return;
 
+    /* Enquanto as abas não estão marcadas como "ativadas", o CSS do Elementor
+       força o primeiro painel a ficar visível:
+
+         .e-n-tabs:not(.e-activated) > .e-n-tabs-content > .e-con:first-child
+           { display: flex }
+
+       Sem esta classe, trocar de aba deixava os dois painéis na tela ao mesmo
+       tempo: eles dividiam a linha, cada cartão caía para metade da largura e
+       um plano aparecia por cima do outro. */
+    bloco.classList.add("e-activated");
+
     function abrir(indice) {
       titulos.forEach(function (t, i) {
         var ativo = i === indice;
@@ -59,7 +70,11 @@
       });
       paineis.forEach(function (p, i) {
         p.classList.toggle("e-active", i === indice);
-        if (i === indice) atualizarCarrosseis(p);
+      });
+      /* o carrossel do painel que estava escondido nasceu com largura zero:
+         só dá para remedir depois que o navegador aplicou o display novo */
+      requestAnimationFrame(function () {
+        if (paineis[indice]) atualizarCarrosseis(paineis[indice]);
       });
     }
 
