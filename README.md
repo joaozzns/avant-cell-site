@@ -58,20 +58,35 @@ ser atualizados.**
 
 ## Limitacoes
 
-- **Formularios nao enviam** — apontavam para o `admin-ajax.php` do WordPress.
-- Chamadas a `wp-json/`, `feed/` e `xmlrpc.php` ficaram com URL absoluta
-  apontando para o dominio original. Nao afetam nada visual.
-- Analytics e pixels de terceiros ainda carregam dos dominios originais.
-- Ha ~800 links internos ainda apontando para `mercadophone.app.br`
-  (menu, botoes, rodape). Precisam do dominio do Avant Cell.
+- **Formularios nao enviam** — apontavam para o `admin-ajax.php` do WordPress
+  e ficaram sem destino.
+- Sem analytics: os rastreadores do site de origem foram removidos em
+  15/09/2026 e nenhum GTM ou Pixel proprio entrou no lugar.
 
-## Pendencias de conteudo
+## Pendencias
 
-- **WhatsApp/Instagram** sao anunciados na tabela de
-  planos e no FAQ, mas nao existem. A pagina `/crmphone/` inteira e sobre o
-  CRM de WhatsApp/Instagram.
-- Sobraram verdes da paleta antiga: badge "Melhor escolha", "ECONOMIZE 15%"
-  (o desconto real do plano anual e 33%) e algumas pilulas de recurso.
-- O card "Controle total da sua operacao" perdeu a coluna visual e o texto
-  ficou desalinhado.
-- Assets orfaos acumulados (fotos e SVGs removidos) ainda ocupam espaco.
+Em ordem de urgencia.
+
+1. **Os botoes "Quero o ..." levam o cliente para o checkout do concorrente.**
+   Os doze botoes das duas paginas de plano apontam para
+   `celcash.celcoin.com.br/mercado-phone/...` e
+   `subscription.mercadophone.tech`. Quem compra, compra de outra empresa. Os
+   botoes do plano mensal ainda apontam para os links `...anual1`, entao nem o
+   periodo confere. Precisam do checkout do Avant Cell antes de qualquer
+   divulgacao.
+2. **Instagram `mercadophone.hub`** no rodape de cinco paginas.
+3. **WhatsApp `5511950492122`** na pagina de contato — numero do site de origem.
+4. `entrar/config.js` aponta para `http://localhost:3000`; precisa da URL do
+   sistema publicado.
+5. "ECONOMIZE 15%" na aba Mensal ficou inconsistente com o "ECONOMIZE 23%" da
+   aba Anual. Os dois sao escritos a mao no CSS do Elementor
+   (`.e-n-tabs-heading::after`) e nao acompanham os precos.
+6. FAQ, listas de recursos e a pagina `/recursos/` ainda tem textos identicos
+   aos do site de origem (64 iguais e 11 quase iguais na ultima comparacao).
+7. Assets orfaos acumulados (fotos e SVGs de secoes removidas) ainda ocupam
+   espaco.
+
+Ja resolvido e que era pendencia antes: os ~800 links internos para o dominio
+antigo, as chamadas a `wp-json`/`xmlrpc.php`, os rastreadores de terceiros e as
+paginas orfas (`/crmphone/`, `/crm-2-0/`, `/evento-hub/`, `/pagina-de-links/`,
+`/home-mercado-phone/`).
