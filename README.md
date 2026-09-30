@@ -77,13 +77,14 @@ Em ordem de urgencia.
 2. **Instagram `mercadophone.hub`** no rodape de cinco paginas.
 3. `entrar/config.js` aponta para `http://localhost:3000`; precisa da URL do
    sistema publicado.
-4. "ECONOMIZE 15%" na aba Mensal ficou inconsistente com o "ECONOMIZE 23%" da
-   aba Anual. Os dois sao escritos a mao no CSS do Elementor
-   (`.e-n-tabs-heading::after`) e nao acompanham os precos.
-5. FAQ, listas de recursos e a pagina `/recursos/` ainda tem textos identicos
+4. FAQ, listas de recursos e a pagina `/recursos/` ainda tem textos identicos
    aos do site de origem (64 iguais e 11 quase iguais na ultima comparacao).
-6. Assets orfaos acumulados (fotos e SVGs de secoes removidas) ainda ocupam
+5. Assets orfaos acumulados (fotos e SVGs de secoes removidas) ainda ocupam
    espaco.
+
+O rotulo "ECONOMIZE 23%" das duas abas e escrito a mao no CSS do Elementor
+(`.e-n-tabs-heading::after`, uma regra por aba). Ele nao acompanha os precos:
+se os planos mudarem, esse numero precisa ser refeito junto.
 
 Ja resolvido e que era pendencia antes: os ~800 links internos para o dominio
 antigo, as chamadas a `wp-json`/`xmlrpc.php`, os rastreadores de terceiros e as
