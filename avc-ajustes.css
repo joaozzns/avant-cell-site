@@ -350,3 +350,23 @@ table table{font-size:.8em}table table td,table table th{padding:7px;line-height
 		--margin-top: 36px !important;
 	}
 }
+
+/* Planos: o sufixo do preço
+   ----------------------------------------------------------------------
+   O `.txt3` ao lado do valor nunca teve estilo: herdava os 40px do preço,
+   entao "R$ 97 Mensal" saia com "Mensal" do mesmo tamanho do numero. Passava
+   despercebido enquanto era uma palavra; com o plano anual passando a dizer
+   "/mes · cobrado R$ 900 por ano", virou tres linhas de 40px que
+   desalinhavam os tres cartoes.
+
+   Menor e em linha propria: alem de caber, e como cartao de preco se le em
+   qualquer lugar — o numero grande, a condicao pequena embaixo. */
+.box1 .txt3,
+.box2 .txt3 {
+	display: block;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 1.35;
+	opacity: 0.72;
+	margin-top: 4px;
+}
