@@ -75,11 +75,9 @@ Em ordem de urgencia.
    periodo confere. Precisam do checkout do Avant Cell antes de qualquer
    divulgacao.
 2. **Instagram `mercadophone.hub`** no rodape de cinco paginas.
-3. `entrar/config.js` aponta para `http://localhost:3000`; precisa da URL do
-   sistema publicado.
-4. FAQ, listas de recursos e a pagina `/recursos/` ainda tem textos identicos
+3. FAQ, listas de recursos e a pagina `/recursos/` ainda tem textos identicos
    aos do site de origem (64 iguais e 11 quase iguais na ultima comparacao).
-5. Assets orfaos acumulados (fotos e SVGs de secoes removidas) ainda ocupam
+4. Assets orfaos acumulados (fotos e SVGs de secoes removidas) ainda ocupam
    espaco.
 
 O rotulo "ECONOMIZE 23%" das duas abas e escrito a mao no CSS do Elementor
@@ -90,4 +88,5 @@ Ja resolvido e que era pendencia antes: os ~800 links internos para o dominio
 antigo, as chamadas a `wp-json`/`xmlrpc.php`, os rastreadores de terceiros e as
 paginas orfas (`/crmphone/`, `/crm-2-0/`, `/evento-hub/`, `/pagina-de-links/`,
 `/home-mercado-phone/`) e o WhatsApp da pagina de contato, que passou a ser
-`5531990993306` em 28/09/2026.
+`5531990993306` em 28/09/2026, e o `entrar/config.js`, que passou a apontar para
+`https://avant-cell-sistema.vercel.app` em 30/09/2026.
