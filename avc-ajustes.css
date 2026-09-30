@@ -317,3 +317,23 @@ table table{font-size:.8em}table table td,table table th{padding:7px;line-height
 	--row-gap: 18px !important;
 	--column-gap: 18px !important;
 }
+
+/* Hero no celular e no tablet: enquadrar onde a arte tem cor
+   ----------------------------------------------------------------------
+   Ate 1024px a hero usa `background-size: cover`. A arte e deitada (2560x1132)
+   e a caixa e em pe (390x844 num celular), entao o navegador corta as laterais
+   e mostra so a faixa central — justamente a parte escura, sem nenhuma das
+   diagonais azuis. O resultado era uma hero quase preta no telefone.
+
+   Medindo a densidade de azul por faixa vertical da arte, a faixa da esquerda
+   tem 11,8x mais azul que a central; na tela renderizada a diferenca fica em
+   7x no celular e 2,3x a 1024px. Entao o corte passa a comecar pela esquerda.
+
+   O seletor repete o do Elementor porque a regra original usa tres classes e
+   `!important`: qualquer coisa menor perde o desempate. */
+@media (max-width: 1024px) {
+	.elementor-5644 .elementor-element.elementor-element-46deddd:not(.elementor-motion-effects-element-type-background),
+	.elementor-5644 .elementor-element.elementor-element-46deddd > .elementor-motion-effects-container > .elementor-motion-effects-layer {
+		background-position: left top !important;
+	}
+}

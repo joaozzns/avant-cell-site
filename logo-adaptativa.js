@@ -7,7 +7,13 @@
   "use strict";
 
   var logos = document.querySelectorAll(".minha-logo img");
-  if (!logos.length) return;
+  /* O botao "Entrar" e de vidro: por cima de secao escura ele e branco, por
+     cima de secao clara precisa virar escuro, senao some. O CSS dos dois
+     estados ja existe no HTML (.fundo-claro .btn-glass-header) desde o
+     redesenho, esperando alguem aplicar a classe. E o mesmo teste da logo, no
+     retangulo do botao. */
+  var botoes = document.querySelectorAll(".btn-glass-header");
+  if (!logos.length && !botoes.length) return;
 
   /* Zonas escuras da pagina.
      modo "imagem": a secao pinta a imagem com background-size:contain, entao a
@@ -220,6 +226,16 @@
       var alvo = urlDe(img, maioriaEscura(r) ? "LOGO.svg" : "LOGO2.svg");
       if (img.src !== alvo) img.src = alvo;
     }
+    for (var j = 0; j < botoes.length; j++) {
+      var bt = botoes[j], rb = bt.getBoundingClientRect();
+      if (!rb.width || !rb.height) continue;           // variante oculta
+      /* a classe vai no pai porque o CSS do redesenho espera um ancestral */
+      var pai = bt.parentElement || bt;
+      var claro = !maioriaEscura(rb);
+      if (pai.classList.contains("fundo-claro") !== claro) {
+        pai.classList.toggle("fundo-claro", claro);
+      }
+    }
   }
 
   var agendado = false;
@@ -234,6 +250,20 @@
   addEventListener("scroll", agendar, { passive: true });
   addEventListener("resize", recalcular);
   addEventListener("load", recalcular);
+
+  /* A primeira avaliacao caia antes de o layout assentar: no celular a logo
+     abria escura sobre a hero escura e so acertava quando a pessoa rolava a
+     pagina. Fontes, imagens e as classes responsivas do Elementor mudam as
+     medidas depois do DOMContentLoaded, entao reavaliamos algumas vezes. */
+  [60, 250, 800].forEach(function (ms) { setTimeout(recalcular, ms); });
+  if (window.ResizeObserver) {
+    var obs = new ResizeObserver(recalcular);
+    obs.observe(document.documentElement);
+  }
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(recalcular);
+  }
+
   if (document.readyState !== "loading") agendar();
   else addEventListener("DOMContentLoaded", agendar);
 })();
