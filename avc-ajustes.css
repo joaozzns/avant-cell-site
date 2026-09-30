@@ -337,3 +337,16 @@ table table{font-size:.8em}table table td,table table th{padding:7px;line-height
 		background-position: left top !important;
 	}
 }
+
+/* Cartões abaixo da hero: espaço para respirar fora do desktop
+   ----------------------------------------------------------------------
+   No desktop os tres cartoes sobem 55px e encaixam no degrau da hero — e o
+   desenho. Abaixo de 1025px esse encaixe nao existe (a hero vira um bloco
+   reto) e a margem negativa e zerada, entao o primeiro cartao ficava colado
+   na hero, com vao de exatamente 0px, enquanto o espaco ate o titulo
+   seguinte era muito maior. 36px devolve o ritmo sem abrir um vazio. */
+@media (max-width: 1024px) {
+	.elementor-5644 .elementor-element.elementor-element-c899dbe {
+		--margin-top: 36px !important;
+	}
+}
