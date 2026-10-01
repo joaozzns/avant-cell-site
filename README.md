@@ -67,10 +67,9 @@ ser atualizados.**
 
 Em ordem de urgencia.
 
-1. **Instagram `mercadophone.hub`** no rodape de cinco paginas.
-2. FAQ, listas de recursos e a pagina `/recursos/` ainda tem textos identicos
+1. FAQ, listas de recursos e a pagina `/recursos/` ainda tem textos identicos
    aos do site de origem (64 iguais e 11 quase iguais na ultima comparacao).
-3. Assets orfaos acumulados (fotos e SVGs de secoes removidas) ainda ocupam
+2. Assets orfaos acumulados (fotos e SVGs de secoes removidas) ainda ocupam
    espaco.
 
 O rotulo "ECONOMIZE 23%" das duas abas e escrito a mao no CSS do Elementor
@@ -84,4 +83,5 @@ paginas orfas (`/crmphone/`, `/crm-2-0/`, `/evento-hub/`, `/pagina-de-links/`,
 `5531990993306` em 28/09/2026, e o `entrar/config.js`, que passou a apontar para
 `https://avant-cell-sistema.vercel.app` em 30/09/2026, e os doze botoes
 "Quero o ...", que em 30/09/2026 passaram a apontar para os planos de assinatura
-do Avant Cell no Mercado Pago em vez do checkout do concorrente.
+do Avant Cell no Mercado Pago em vez do checkout do concorrente, e o Instagram
+do rodape, que passou a ser `avantcell.br`.
