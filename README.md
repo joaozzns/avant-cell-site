@@ -63,6 +63,15 @@ ser atualizados.**
 - Sem analytics: os rastreadores do site de origem foram removidos em
   15/09/2026 e nenhum GTM ou Pixel proprio entrou no lugar.
 
+## Onde esta no ar
+
+| | |
+|---|---|
+| Site | https://avantcell.com.br (e `www`) |
+| Sistema | https://app.avantcell.com.br |
+
+Os enderecos `.vercel.app` dos dois projetos continuam funcionando em paralelo.
+
 ## Pendencias
 
 Em ordem de urgencia.

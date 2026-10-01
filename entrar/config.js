@@ -4,8 +4,8 @@
 window.AVANT = {
   supabaseUrl: "https://jeqngqcpoeaezfpazbzk.supabase.co",
   supabaseKey: "sb_publishable_lLROyPxdKaJeJii9SgH3yg_DhTj0UDU",
-  /* para onde mandamos a pessoa depois de autenticar. Hoje e o endereco da
-     Vercel; quando houver dominio proprio (ex.: https://app.avantcell.com.br),
-     e aqui que se troca. */
-  sistemaUrl: "https://avant-cell-sistema.vercel.app"
+  /* para onde mandamos a pessoa depois de autenticar. O endereco da Vercel
+     (avant-cell-sistema.vercel.app) continua funcionando em paralelo, entao
+     trocar aqui nao derruba ninguem no meio do caminho. */
+  sistemaUrl: "https://app.avantcell.com.br"
 };
