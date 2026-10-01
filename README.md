@@ -67,17 +67,10 @@ ser atualizados.**
 
 Em ordem de urgencia.
 
-1. **Os botoes "Quero o ..." levam o cliente para o checkout do concorrente.**
-   Os doze botoes das duas paginas de plano apontam para
-   `celcash.celcoin.com.br/mercado-phone/...` e
-   `subscription.mercadophone.tech`. Quem compra, compra de outra empresa. Os
-   botoes do plano mensal ainda apontam para os links `...anual1`, entao nem o
-   periodo confere. Precisam do checkout do Avant Cell antes de qualquer
-   divulgacao.
-2. **Instagram `mercadophone.hub`** no rodape de cinco paginas.
-3. FAQ, listas de recursos e a pagina `/recursos/` ainda tem textos identicos
+1. **Instagram `mercadophone.hub`** no rodape de cinco paginas.
+2. FAQ, listas de recursos e a pagina `/recursos/` ainda tem textos identicos
    aos do site de origem (64 iguais e 11 quase iguais na ultima comparacao).
-4. Assets orfaos acumulados (fotos e SVGs de secoes removidas) ainda ocupam
+3. Assets orfaos acumulados (fotos e SVGs de secoes removidas) ainda ocupam
    espaco.
 
 O rotulo "ECONOMIZE 23%" das duas abas e escrito a mao no CSS do Elementor
@@ -89,4 +82,6 @@ antigo, as chamadas a `wp-json`/`xmlrpc.php`, os rastreadores de terceiros e as
 paginas orfas (`/crmphone/`, `/crm-2-0/`, `/evento-hub/`, `/pagina-de-links/`,
 `/home-mercado-phone/`) e o WhatsApp da pagina de contato, que passou a ser
 `5531990993306` em 28/09/2026, e o `entrar/config.js`, que passou a apontar para
-`https://avant-cell-sistema.vercel.app` em 30/09/2026.
+`https://avant-cell-sistema.vercel.app` em 30/09/2026, e os doze botoes
+"Quero o ...", que em 30/09/2026 passaram a apontar para os planos de assinatura
+do Avant Cell no Mercado Pago em vez do checkout do concorrente.
