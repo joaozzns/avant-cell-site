@@ -387,3 +387,21 @@ table table{font-size:.8em}table table td,table table th{padding:7px;line-height
 		--min-height: auto !important;
 	}
 }
+
+/* "IA AVANT": o subtítulo espremido em um terço do bloco
+   ----------------------------------------------------------------------
+   A regra do Elementor para telas menores troca a largura do paragrafo por
+   `width: auto; max-width: auto`. Dentro de um contêiner flex, isso faz o
+   elemento encolher ate caber no texto, e o resultado eram 133px de coluna
+   num bloco de 370px — 36% da largura. A frase quebrava em duas linhas curtas
+   no meio do espaco vazio, enquanto no desktop ocupa a largura inteira.
+
+   O vazio em volta do texto nao e vazio: o fundo do bloco e a arte do robo,
+   com background-size: cover. Por isso aqui se alarga o texto em vez de
+   encolher o bloco — reduzir a altura cortaria a imagem. */
+@media (max-width: 1024px) {
+	.elementor-5644 .elementor-element.elementor-element-35ede8a {
+		width: 100% !important;
+		max-width: 100% !important;
+	}
+}
