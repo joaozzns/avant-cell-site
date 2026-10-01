@@ -370,3 +370,20 @@ table table{font-size:.8em}table table td,table table th{padding:7px;line-height
 	opacity: 0.72;
 	margin-top: 4px;
 }
+
+/* "Controle total da sua operação": o vazio deixado pela coluna que saiu
+   ----------------------------------------------------------------------
+   O bloco tem `min-height: 650px` ate 1024px. Esse numero existia porque ao
+   lado do texto havia uma coluna visual, removida no rebranding: sem ela
+   sobravam 444px de nada entre o subtitulo e os cartoes de recurso, e no
+   celular a pessoa rolava quase uma tela inteira em branco achando que a
+   secao tinha acabado.
+
+   Altura automatica abaixo de 1025px: o bloco passa a ter o tamanho do que
+   tem dentro. No desktop os 454px seguem valendo, onde a folga e de 152px e
+   serve de respiro. */
+@media (max-width: 1024px) {
+	.elementor-5644 .elementor-element.elementor-element-7986dbf {
+		--min-height: auto !important;
+	}
+}

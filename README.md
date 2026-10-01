@@ -67,9 +67,14 @@ ser atualizados.**
 
 Em ordem de urgencia.
 
-1. FAQ, listas de recursos e a pagina `/recursos/` ainda tem textos identicos
+1. Dois blocos ainda com altura minima herdada do layout antigo, no celular:
+   a secao "IA AVANT" da home (225px de sobra) e o cartao Premium das duas
+   paginas de plano (197px e 219px). O do Premium e proposital em parte -- ele
+   e o cartao em destaque e sobe acima dos outros -- entao mexer ali pede olhar
+   antes.
+2. FAQ, listas de recursos e a pagina `/recursos/` ainda tem textos identicos
    aos do site de origem (64 iguais e 11 quase iguais na ultima comparacao).
-2. Assets orfaos acumulados (fotos e SVGs de secoes removidas) ainda ocupam
+3. Assets orfaos acumulados (fotos e SVGs de secoes removidas) ainda ocupam
    espaco.
 
 O rotulo "ECONOMIZE 23%" das duas abas e escrito a mao no CSS do Elementor
