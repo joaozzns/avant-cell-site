@@ -405,3 +405,104 @@ table table{font-size:.8em}table table td,table table th{padding:7px;line-height
 		max-width: 100% !important;
 	}
 }
+
+
+/* Botão flutuante do WhatsApp
+   ----------------------------------------------------------------------
+   A landing page tinha um único caminho de contato: o WhatsApp dentro do
+   rodapé e da página de contato, que exige rolar até o fim ou trocar de
+   página. Quem está no meio da página de planos com uma dúvida não tinha
+   onde clicar.
+
+   Verde do WhatsApp, e não o azul da marca, porque o reconhecimento do botão
+   é o que faz ele funcionar — quem vê a bolha verde sabe o que acontece ao
+   clicar, sem ler.
+
+   No celular é só o círculo: a faixa com texto comeria largura de tela num
+   lugar onde ela é o recurso mais escasso. */
+.avc-zap {
+	position: fixed;
+	right: 18px;
+	bottom: 18px;
+	z-index: 9998;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	height: 56px;
+	width: 56px;
+	padding: 0;
+	border-radius: 999px;
+	background: #25d366;
+	color: #fff;
+	text-decoration: none;
+	font-family: inherit;
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 1;
+	box-shadow: 0 8px 24px rgb(0 0 0 / .20);
+	transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+
+.avc-zap:hover,
+.avc-zap:focus-visible {
+	background: #1ebe5b;
+	color: #fff;
+	transform: translateY(-2px);
+	box-shadow: 0 12px 30px rgb(0 0 0 / .26);
+}
+
+.avc-zap:focus-visible {
+	outline: 3px solid #fff;
+	outline-offset: 3px;
+}
+
+.avc-zap__icone {
+	width: 30px;
+	height: 30px;
+	fill: currentColor;
+	flex: none;
+}
+
+/* o rótulo existe para o leitor de tela mesmo quando não aparece */
+.avc-zap__texto {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+@media (min-width: 1025px) {
+	.avc-zap {
+		right: 28px;
+		bottom: 28px;
+		width: auto;
+		padding: 0 20px 0 18px;
+	}
+
+	.avc-zap__texto {
+		position: static;
+		width: auto;
+		height: auto;
+		margin: 0;
+		overflow: visible;
+		clip: auto;
+		clip-path: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.avc-zap {
+		transition: none;
+	}
+
+	.avc-zap:hover,
+	.avc-zap:focus-visible {
+		transform: none;
+	}
+}
