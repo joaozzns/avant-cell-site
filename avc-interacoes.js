@@ -1,7 +1,27 @@
 /* Avant Cell — liga o carrossel e as abas do Elementor sem depender de scripts
    externos. Antes, esses comportamentos vinham de arquivos hospedados no
    servidor do MercadoPhone; aqui usamos a biblioteca Swiper que já é carregada
-   pelo próprio site, lendo as mesmas configurações que o Elementor gravou. */
+   pelo próprio site, lendo as mesmas configurações que o Elementor gravou.
+
+   Ligado a isto: nas páginas, cinco tipos de widget tiveram o atributo
+   data-widget_type trocado de ".default" para ".avc" — nav-menu, text-editor,
+   nested-tabs, nested-carousel e nested-accordion.
+
+   O motivo: o pacote do Elementor guarda um mapa de tipo de widget para
+   carregador de módulo, assim —
+
+       elementsHandlers["nested-accordion.default"] = () => n.e(915).then(...)
+
+   Ao encontrar um widget desses, ele ia buscar o pedaço de JavaScript
+   correspondente em /wp-content/plugins/elementor/assets/js/. Esses arquivos
+   nunca foram espelhados para cá, então eram seis 404 e seis ChunkLoadError
+   no console a cada visita, em toda página. Com o sufixo trocado, a busca no
+   mapa não encontra nada e o pedido nem acontece. O comportamento não se
+   perde: menu, abas, carrossel e acordeão são justamente o que este arquivo
+   (e o <details> nativo do HTML, no caso do acordeão) já faz.
+
+   Os cinco textos não aparecem em nenhum CSS nem em nenhum outro script do
+   site — foi conferido antes da troca. */
 (function () {
   "use strict";
 
