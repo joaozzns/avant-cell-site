@@ -22,7 +22,7 @@
     var tablet = numero(cfg.slides_to_show_tablet, Math.min(2, porTela));
     var celular = numero(cfg.slides_to_show_mobile, 1);
 
-    new window.Swiper(alvo, {
+    var opcoes = {
       slidesPerView: celular,
       spaceBetween: espaco,
       speed: numero(cfg.speed, 500),
@@ -31,13 +31,30 @@
       breakpoints: {
         768: { slidesPerView: tablet, spaceBetween: espaco },
         1025: { slidesPerView: porTela, spaceBetween: espaco }
-      },
-      pagination: alvo.querySelector(".swiper-pagination")
-        ? { el: alvo.querySelector(".swiper-pagination"), clickable: true } : undefined,
-      navigation: alvo.querySelector(".elementor-swiper-button-next")
-        ? { nextEl: alvo.querySelector(".elementor-swiper-button-next"),
-            prevEl: alvo.querySelector(".elementor-swiper-button-prev") } : undefined
-    });
+      }
+    };
+
+    /* Só declara pagination e navigation quando os elementos existem. Passar a
+       chave com undefined não é o mesmo que omiti-la: esta versão do Swiper
+       liga o módulo porque a chave está presente e, ao ler params.pagination.el
+       de undefined, estoura "Cannot read properties of undefined (reading 'el')".
+       Os dois carrosséis desta página não têm bolinhas nem setas, então o erro
+       acontecia nos dois, em toda visita. O construtor já tinha gravado
+       alvo.swiper antes de estourar, e por isso o carrossel parecia certo na
+       tela -- mas a inicialização nunca terminava (swiper.initialized ficava
+       falso) e o evento de init nunca disparava. */
+    var bolinhas = alvo.querySelector(".swiper-pagination");
+    if (bolinhas) opcoes.pagination = { el: bolinhas, clickable: true };
+
+    var proxima = alvo.querySelector(".elementor-swiper-button-next");
+    if (proxima) {
+      opcoes.navigation = {
+        nextEl: proxima,
+        prevEl: alvo.querySelector(".elementor-swiper-button-prev")
+      };
+    }
+
+    new window.Swiper(alvo, opcoes);
   }
 
   function atualizarCarrosseis(escopo) {
