@@ -203,8 +203,64 @@
     });
   }
 
+
+  /* ---- conteúdo que aparece ao rolar ------------------------------------
+     O tema esconde 28 blocos da home com .scroll-top e irmãs, esperando que
+     um script os revelasse na hora de entrar na tela. Esse script não veio
+     na cópia do site, e os blocos ficavam invisíveis para sempre.
+
+     A classe avc-anima no <html> é o aviso de que este arquivo está vivo:
+     só com ela o CSS esconde alguma coisa. O que já está na tela quando a
+     página carrega é revelado na hora, sem animação, para não piscar acima
+     da dobra. O resto espera a rolagem. */
+
+  var ALVOS = ".scroll-top, .scroll-left, .scroll-right, .scroll-bottom";
+
+  function revelar(el) {
+    el.classList.add("avc-visivel");
+  }
+
+  function ligarRevelacao() {
+    var blocos = document.querySelectorAll(ALVOS);
+    if (!blocos.length) return;
+
+    document.documentElement.classList.add("avc-anima");
+
+    if (!("IntersectionObserver" in window)) {
+      blocos.forEach(revelar);   // navegador antigo: mostra tudo de uma vez
+      return;
+    }
+
+    var observador = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        revelar(e.target);
+        observador.unobserve(e.target);
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0 });
+
+    blocos.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) {
+        revelar(el);             // já está na tela: nada de animar na carga
+      } else {
+        observador.observe(el);
+      }
+    });
+
+    /* Rede de segurança: se por qualquer motivo algum bloco continuar
+       escondido depois de oito segundos, ele aparece assim mesmo. Página
+       com conteúdo invisível é pior do que página sem animação. */
+    setTimeout(function () {
+      document.querySelectorAll(ALVOS).forEach(function (el) {
+        if (!el.classList.contains("avc-visivel")) revelar(el);
+      });
+    }, 8000);
+  }
+
   function iniciar() {
     aplicarEstilo();
+    comSeguranca(ligarRevelacao)();
     document.querySelectorAll(".elementor-nav-menu--main").forEach(comSeguranca(ligarSubmenus));
     document.querySelectorAll(".elementor-menu-toggle").forEach(comSeguranca(ligarSanduiche));
     document.querySelectorAll(".elementor-widget-n-carousel").forEach(comSeguranca(ligarCarrossel));

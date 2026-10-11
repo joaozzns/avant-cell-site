@@ -506,3 +506,58 @@ table table{font-size:.8em}table table td,table table th{padding:7px;line-height
 		transform: none;
 	}
 }
+
+/* Conteúdo que aparecia ao rolar — e tinha parado de aparecer
+   ----------------------------------------------------------------------
+   O tema marca 28 blocos da home com .scroll-top / .scroll-left /
+   .scroll-right / .scroll-bottom, e a folha do tema os deixa assim:
+
+       opacity: 0 !important; filter: blur(10px) !important;
+       transition: opacity .8s, filter .8s, transform .8s !important;
+
+   Era meia animação: o CSS escondia, e um script revelava ao rolar. O
+   script vinha do servidor do MercadoPhone e não veio junto na cópia.
+   Resultado: 27 dos 28 blocos ficavam invisíveis para sempre — 2813px de
+   altura numa página de 7672px, incluindo os botões "Começar agora", os
+   títulos de seção e o FAQ inteiro. Quem rolava via a seção ocupar o
+   espaço e não mostrar nada.
+
+   A regra abaixo inverte a lógica: por padrão tudo aparece. Só esconde
+   quando o JavaScript está vivo e anunciou isso pondo .avc-anima no
+   <html> — assim, se o script falhar de novo, o pior que acontece é a
+   animação não rodar, nunca o conteúdo sumir. */
+.scroll-top,
+.scroll-left,
+.scroll-right,
+.scroll-bottom {
+	opacity: 1 !important;
+	filter: none !important;
+	transform: none !important;
+}
+
+html.avc-anima .scroll-top:not(.avc-visivel),
+html.avc-anima .scroll-left:not(.avc-visivel),
+html.avc-anima .scroll-right:not(.avc-visivel),
+html.avc-anima .scroll-bottom:not(.avc-visivel) {
+	opacity: 0 !important;
+	filter: blur(10px) !important;
+}
+
+html.avc-anima .scroll-top:not(.avc-visivel)    { transform: translateY(-50px) !important; }
+html.avc-anima .scroll-bottom:not(.avc-visivel) { transform: translateY(50px)  !important; }
+html.avc-anima .scroll-left:not(.avc-visivel)   { transform: translateX(-50px) !important; }
+html.avc-anima .scroll-right:not(.avc-visivel)  { transform: translateX(50px)  !important; }
+
+/* quem pediu menos movimento no sistema não vê animação nenhuma — e,
+   principalmente, não corre o risco de ficar sem o conteúdo */
+@media (prefers-reduced-motion: reduce) {
+	html.avc-anima .scroll-top,
+	html.avc-anima .scroll-left,
+	html.avc-anima .scroll-right,
+	html.avc-anima .scroll-bottom {
+		opacity: 1 !important;
+		filter: none !important;
+		transform: none !important;
+		transition: none !important;
+	}
+}
