@@ -425,17 +425,15 @@ html.avc-anima .scroll-right:not(.avc-visivel)  { transform: translateX(50px)  !
 	font-weight: 500;
 }
 
-/* Crédito no rodapé: no celular desce para a própria linha */
+/* Crédito no rodapé: sempre na própria linha, abaixo dos direitos reservados */
+.avc-credito {
+	display: block;
+	margin-top: 8px;
+}
+
 .avc-credito a {
 	color: inherit;
 	font-weight: 600;
 	text-decoration: underline;
 	text-underline-offset: 2px;
-}
-
-@media (max-width: 767px) {
-	.avc-credito {
-		display: block;
-		margin-top: 4px;
-	}
 }
