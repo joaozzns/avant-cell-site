@@ -398,3 +398,29 @@ html.avc-anima .scroll-right:not(.avc-visivel)  { transform: translateX(50px)  !
 		transition: none !important;
 	}
 }
+
+/* Teste grátis: aparece junto de quem decide (botão do topo e tabela de
+   planos). O prazo mora em saas_settings.trial_days; se mudar lá, mude aqui. */
+.avc-teste {
+	margin: 0 auto 16px;
+	padding: 6px 14px;
+	width: fit-content;
+	max-width: 100%;
+	border: 1px solid rgb(76 134 255 / .45);
+	border-radius: 999px;
+	background: rgb(76 134 255 / .12);
+	color: #8fb4ff;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.4;
+	text-align: center;
+}
+
+.avc-teste--hero {
+	margin: 14px auto 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: rgb(255 255 255 / .85);
+	font-weight: 500;
+}
